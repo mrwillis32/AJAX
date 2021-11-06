@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>My First Dip with AJAX</title>
+		<link rel="stylesheet" href="style_2.css">
+    </head>
+    <body>
+        <div class="main">
+			<h2>Get Word of The Day:</h2>
+			<div class='content' id="content">
+				<input type="button" class="button" value="W.O.D" id="btn_content" onclick="getContent();"/>
+			</div>
+		<script type="text/javascript">
+           // step 1: setup the xml http request objects.
+           var ajax = new XMLHttpRequest();
+
+           // step 2: prepare the open ajax request
+           ajax.open('GET', 'vocab.html');
+
+           // STEP 3: define the ajax response callback method
+           ajax.onreadystatechange = function() {
+               if (ajax.readyState == 4) {
+                   document.getElementById('content').innerHTML = ajax.responseText;
+               }
+           }
+
+           // STEP 4: send the ajax request for data
+           function getContent() {
+                ajax.send();
+                document.getElementById('btn_content').style.display = 'none';    
+           }
+
+			
+		</script>
+    </body>
+</html>
